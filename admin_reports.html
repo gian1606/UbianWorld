@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ISSO Reports - UbianWorld</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <script src="script.js" defer></script> 
+        <style>
+            /* Quick styles for the Report Dashboard until you update styles.css */
+            .report-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+                margin-top: 30px;
+            }
+            .report-card {
+                background-color: white;
+                padding: 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                transition: transform 0.3s;
+                border-left: 5px solid var(--ub-blue);
+            }
+            .report-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            }
+            .report-card h3 {
+                font-size: 1.2em;
+                color: #555;
+                margin-bottom: 15px;
+            }
+            .report-card .metric-value {
+                font-size: 3em;
+                font-weight: 700;
+                color: var(--ub-blue);
+                margin-bottom: 10px;
+            }
+            .report-card ul {
+                list-style: none;
+                padding: 0;
+            }
+            .report-card li {
+                display: flex;
+                justify-content: space-between;
+                padding: 5px 0;
+                border-top: 1px dashed #eee;
+                font-size: 0.95em;
+            }
+            .report-card li:first-child {
+                border-top: none;
+            }
+            .report-card .status-indicator {
+                font-weight: bold;
+            }
+            .status-Open, .status-Pending { color: #ff9800; }
+            .status-Closed, .status-Approved { color: #28a745; }
+            .status-Rejected { color: #dc3545; }
+            
+        </style>
+    </head>
+
+    <body class="admin-body">
+        <header>
+            <div class="brand-container">
+                <img src="logo.jpg" alt="ISSO Logo" class="header-logo">
+                <span class="brand-text">ISSO Staff</span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profile.html">My Profile</a></li> 
+                    <li><a href="admin_dashboard.html">Dashboard</a></li> 
+                    <li><a href="admin_reports.html" class="active">Reports</a></li> <li class="login-button"><a href="login.html" id="auth-link">Log Out</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="container admin-main">
+            <h1>ISSO Administrative Reports</h1>
+            <p>Real-time overview of system activity, compliance status, and student records (DFD 5.0).</p>
+
+            <div id="admin-reports-content">
+                
+                <section class="dashboard-section report-section">
+                    <div class="section-header">
+                        <h2>📈 System Metrics Overview</h2>
+                        <a href="admin_dashboard.html" class="cta-button secondary-cta">← Back to Dashboard</a>
+                        <button id="refresh-report-data" class="cta-button primary-cta">Refresh Data</button>
+                    </div>
+                    
+                    <div id="report-dashboard" class="report-grid">
+                        <p style="grid-column: 1 / -1; text-align: center;">Loading data...</p>
+                        </div>
+                </section>
+
+            </div>
+            
+            <div id="admin-access-denied" style="display: none; text-align: center; padding: 50px; border: 1px solid #ddd; background: #fff; margin-top: 50px;">
+                <h2>Access Denied 🛑</h2>
+                <p>You must be logged in as an ISSO Staff member to view administrative reports.</p>
+                <a href="login.html" class="cta-button" style="margin-top: 20px;">Go to Login</a>
+            </div>
+
+        </main>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h3>About UbianWorld</h3>
+                    <p>Your go-to platform for university support...</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="announcement.html">Announcements</a></li>
+                        <li><a href="guides.html">Guides & Forms</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@ubianworld.edu.ph</p>
+                    <p>Phone: +63 123 456 7890</p>
+                    <p>Address: University of Batangas, Batangas City, Philippines</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

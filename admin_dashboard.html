@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ISSO Staff Dashboard - UbianWorld</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <script src="script.js" defer></script>
+    </head>
+
+    <body class="admin-body">
+        <header>
+            <div class="brand-container">
+                <img src="logo.jpg" alt="ISSO Logo" class="header-logo">
+                <span class="brand-text">ISSO Staff</span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profile.html">My Profile</a></li> 
+                    <li><a href="admin_dashboard.html" class="active">Dashboard</a></li>
+                    <li class="login-button"><a href="login.html" id="auth-link">Log Out</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="container admin-main">
+            <h1>ISSO Staff Dashboard</h1>
+            <p>Welcome to the International Student Services Office administrative panel. Manage student inquiries, content, and reports from here.</p>
+
+            <div id="admin-dashboard-content">
+                
+                <section class="dashboard-section inquiry-management">
+                    <div class="section-header">
+                        <h2>✉️ Student Inquiries & Support Tickets</h2>
+                        <button class="cta-button primary-cta" id="refresh-inquiries">Refresh List</button>
+                    </div>
+
+                    <div class="inquiry-status-summary">
+                        <p id="inquiry-summary">Loading summary...</p>
+                    </div>
+
+                    <div class="inquiry-list-wrapper">
+                        <table class="data-table inquiry-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student (Username)</th>
+                                    <th>Subject</th>
+                                    <th>Submitted On</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inquiry-list-table-body">
+                                <tr>
+                                    <td colspan="6" style="text-align: center; padding: 30px;">
+                                        <p>Fetching student inquiries...</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <hr style="margin: 50px 0;">
+
+                <section class="dashboard-section content-management">
+                    <h2>📝 Content Management</h2>
+                    <div class="admin-grid-links">
+                        <a href="#" class="admin-card primary-card">
+                            <h3>Manage Announcements</h3>
+                            <p>Create, edit, or delete news and events.</p>
+                        </a>
+                        <a href="#" class="admin-card secondary-card">
+                            <h3>Manage Guides & Forms</h3>
+                            <p>Upload new documents and policy guides.</p>
+                        </a>
+                        <a href="#" class="admin-card tertiary-card">
+                            <h3>Manage FAQs</h3>
+                            <p>Add and modify frequently asked questions.</p>
+                        </a>
+                    </div>
+                </section>
+                
+                <hr style="margin: 50px 0;">
+
+                <section class="dashboard-section reports-management">
+                    <h2>📊 Reporting & Analytics</h2>
+                    <div class="admin-grid-links">
+                        
+                        <div class="tool-card">
+                            <h3>5.0 Generate Reports</h3>
+                            <p>View administrative metrics, student statistics, and compliance summaries.</p>
+                            <a href="admin_reports.html" class="cta-button">View System Reports</a>
+                        </div>
+                        
+                    </div>
+                </section>
+                
+            </div>
+            
+            <div id="admin-access-denied" style="display: none; text-align: center; padding: 50px; border: 1px solid #ddd; background: #fff; margin-top: 50px;">
+                <h2>Access Denied 🛑</h2>
+                <p>You must be logged in as an ISSO Staff member to view this page.</p>
+                <a href="login.html" class="cta-button" style="margin-top: 20px;">Go to Login</a>
+            </div>
+
+        </main>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h3>About UbianWorld</h3>
+                    <p>Your go-to platform for university support...</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="announcement.html">Announcements</a></li>
+                        <li><a href="guides.html">Guides & Forms</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@ubianworld.edu.ph</p>
+                    <p>Phone: +63 123 456 7890</p>
+                    <p>Address: University of Batangas, Batangas City, Philippines</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Manager - ISSO Staff</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <script src="script.js" defer></script> 
+        <style>
+            /* Quick styles for the new table until you update styles.css */
+            .student-list-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .student-list-table th, .student-list-table td {
+                border: 1px solid #ddd;
+                padding: 12px;
+                text-align: left;
+            }
+            .student-list-table th {
+                background-color: var(--ub-blue);
+                color: white;
+            }
+            .student-list-table tr:nth-child(even) {
+                background-color: #f8f8f8;
+            }
+            .student-list-table tr:hover {
+                background-color: #f1f1f1;
+            }
+            .student-list-table button {
+                padding: 5px 10px;
+                cursor: pointer;
+                border: 1px solid var(--ub-blue);
+                background-color: white;
+                color: var(--ub-blue);
+                border-radius: 4px;
+                transition: background-color 0.3s, color 0.3s;
+            }
+            .student-list-table button:hover {
+                background-color: var(--ub-blue);
+                color: white;
+            }
+            
+        </style>
+    </head>
+
+    <body class="admin-body">
+        <header>
+            <div class="brand-container">
+                <img src="logo.jpg" alt="ISSO Logo" class="header-logo">
+                <span class="brand-text">ISSO Staff</span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profile.html">My Profile</a></li> 
+                    <li><a href="admin_dashboard.html" class="active">Dashboard</a></li> 
+                    <li class="login-button"><a href="login.html" id="auth-link">Log Out</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="container admin-main">
+            <h1>International Student Records</h1>
+            <p>Access and manage records for all registered international students, including personal data and required document status (DFD 2.0).</p>
+
+            <div id="admin-student-manager-content">
+                
+                <section class="dashboard-section student-list-section">
+                    <div class="section-header">
+                        <h2>📊 Registered Students List</h2>
+                        <a href="admin_dashboard.html" class="cta-button secondary-cta">← Back to Dashboard</a>
+                        <button id="refresh-student-list" class="cta-button primary-cta">Refresh List</button>
+                    </div>
+                    
+                    <div id="student-summary" style="margin-bottom: 20px; font-weight: bold;">Loading Summary...</div>
+
+                    <div class="table-responsive">
+                        <table class="student-list-table">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Nationality</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="student-list-table-body">
+                                <tr><td colspan="5" style="text-align: center;">Loading student records...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="student-detail-modal-placeholder">
+                        </div>
+
+                    <div id="student-detail-modal" class="modal" style="display: none;">
+                        <div class="modal-content">
+                            <span class="close-button">&times;</span>
+                            <h2><span id="detail-form-title">Viewing Student Record:</span> <span id="current-student-id"></span></h2>
+                            
+                            <form id="student-detail-form" class="admin-form">
+                                <input type="hidden" name="student_id" id="detail-student-id">
+                                
+                                <div class="form-group">
+                                    <label for="detail-username">University ID / Username</label>
+                                    <input type="text" id="detail-username" name="username" readonly>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="detail-first-name">First Name</label>
+                                    <input type="text" id="detail-first-name" name="first_name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="detail-last-name">Last Name</label>
+                                    <input type="text" id="detail-last-name" name="last_name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="detail-email">Email Address</label>
+                                    <input type="email" id="detail-email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="detail-nationality">Nationality</label>
+                                    <input type="text" id="detail-nationality" name="nationality" required>
+                                </div>
+                                
+                                <h3 style="margin-top: 30px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">Required Documents Status (DFD 2.2)</h3>
+                                <div id="student-document-status">
+                                    <p>Document management features will appear here next.</p>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="cta-button primary-cta">Save Changes (Update Record)</button>
+                                    <button type="button" class="cta-button secondary-cta" id="close-detail-modal">Close</button>
+                                </div>
+                                
+                                <div id="detail-form-message" style="margin-top: 20px; text-align: center;"></div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </section>
+
+            </div>
+            
+            <div id="admin-access-denied" style="display: none; text-align: center; padding: 50px; border: 1px solid #ddd; background: #fff; margin-top: 50px;">
+                <h2>Access Denied 🛑</h2>
+                <p>You must be logged in as an ISSO Staff member to view student records.</p>
+                <a href="login.html" class="cta-button" style="margin-top: 20px;">Go to Login</a>
+            </div>
+
+        </main>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h3>About UbianWorld</h3>
+                    <p>Your go-to platform for university support...</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="announcement.html">Announcements</a></li>
+                        <li><a href="guides.html">Guides & Forms</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@ubianworld.edu.ph</p>
+                    <p>Phone: +63 123 456 7890</p>
+                    <p>Address: University of Batangas, Batangas City, Philippines</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Content Manager - ISSO Staff</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <script src="script.js" defer></script> 
+        <style>
+            /* Quick styles for content management until you update styles.css */
+            .content-list-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                margin-top: 30px;
+            }
+            .content-card {
+                background-color: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                border-left: 5px solid var(--ub-blue);
+            }
+            .content-card h3 {
+                margin-top: 0;
+                font-size: 1.2em;
+            }
+            .content-card .date {
+                font-size: 0.85em;
+                color: #777;
+                margin-bottom: 15px;
+            }
+            .content-snippet {
+                margin-bottom: 15px;
+                font-size: 0.9em;
+                color: #555;
+            }
+            .card-actions {
+                display: flex;
+                gap: 10px;
+            }
+            .filter-select {
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-right: 10px;
+            }
+            
+            /* Modal Styles */
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; 
+                z-index: 1000; 
+                left: 0;
+                top: 0;
+                width: 100%; 
+                height: 100%; 
+                overflow: auto; 
+                background-color: rgba(0,0,0,0.4); 
+            }
+            .modal-content {
+                background-color: #fefefe;
+                margin: 5% auto; /* 5% from the top and centered */
+                padding: 30px;
+                border: 1px solid #888;
+                width: 90%; 
+                max-width: 700px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            .modal-content .form-group textarea {
+                min-height: 150px;
+            }
+            .close-button {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+                transition: color 0.2s;
+            }
+            .close-button:hover, .close-button:focus {
+                color: #333;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body class="admin-body">
+        <header>
+            <div class="brand-container">
+                <img src="logo.jpg" alt="ISSO Logo" class="header-logo">
+                <span class="brand-text">ISSO Staff</span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profile.html">My Profile</a></li> 
+                    <li><a href="admin_dashboard.html">Dashboard</a></li> 
+                    <li class="login-button"><a href="login.html" id="auth-link">Log Out</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="container admin-main">
+            <h1>Content Management</h1>
+            <p>Use this panel to create new announcements, upload guides, and manage frequently asked questions.</p>
+
+            <div id="admin-content-manager-content">
+                
+                <section class="dashboard-section content-management-tool">
+                    <div class="section-header">
+                        <h2>📝 Manage Content</h2>
+                        <div>
+                            <label for="content-type-filter">View/Filter:</label>
+                            <select id="content-type-filter" class="filter-select">
+                                <option value="Announcement">Announcements</option>
+                                <option value="Guide">Guides & Forms</option>
+                                <option value="FAQ">FAQs</option>
+                            </select>
+                            <button id="new-content-btn" class="cta-button primary-cta">➕ New Content</button>
+                        </div>
+                    </div>
+                    
+                    <div id="content-list" class="content-list-grid">
+                        <p style="grid-column: 1 / -1; text-align: center;">Loading content...</p>
+                    </div>
+                </section>
+
+                <section class="dashboard-section content-management-tool new-content-form-section" style="display: none;">
+                    <h2>Create New Content</h2>
+                    <form id="new-content-form" method="POST" action="api/manage_content.php">
+                        <div class="form-group">
+                            <label for="new-title">Title:</label>
+                            <input type="text" id="new-title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-type">Content Type:</label>
+                            <select id="new-type" name="type" required>
+                                <option value="Announcement">Announcement</option>
+                                <option value="Guide">Guide</option>
+                                <option value="FAQ">FAQ</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-content-text">Content Text/Body:</label>
+                            <textarea id="new-content-text" name="content_text" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-content-url">Content URL (Optional for Guide/Link):</label>
+                            <input type="url" id="new-content-url" name="content_url" placeholder="e.g., /guides/form_name.pdf or external link">
+                        </div>
+                        <button type="submit" class="cta-button form-submit-button">Publish Content</button>
+                        <button type="button" id="cancel-new-content" class="cta-button secondary-cta">Cancel</button>
+                    </form>
+                </section>
+
+            </div>
+            
+            <div id="admin-access-denied" style="display: none; text-align: center; padding: 50px; border: 1px solid #ddd; background: #fff; margin-top: 50px;">
+                <h2>Access Denied 🛑</h2>
+                <p>You must be logged in as an ISSO Staff member to view this content management page.</p>
+                <a href="login.html" class="cta-button" style="margin-top: 20px;">Go to Login</a>
+            </div>
+
+        </main>
+
+        <div id="editContentModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2 id="edit-content-form-header">Edit Content</h2>
+                <form id="edit-content-form">
+                    <input type="hidden" id="edit-content-id" name="resource_id">
+                    
+                    <div class="form-group">
+                        <label for="edit-title">Title:</label>
+                        <input type="text" id="edit-title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-type">Content Type:</label>
+                        <select id="edit-type" name="type" required>
+                            <option value="Announcement">Announcement</option>
+                            <option value="Guide">Guide</option>
+                            <option value="FAQ">FAQ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-content-text">Content Text/Body:</label>
+                        <textarea id="edit-content-text" name="content_text" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-content-url">Content URL (Optional):</label>
+                        <input type="url" id="edit-content-url" name="content_url" placeholder="e.g., /guides/form_name.pdf or external link">
+                    </div>
+                    <button type="submit" class="cta-button form-submit-button">Save Changes</button>
+                    <button type="button" onclick="closeModal()" class="cta-button secondary-cta">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h3>About UbianWorld</h3>
+                    <p>Your go-to platform for university support...</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="announcement.html">Announcements</a></li>
+                        <li><a href="guides.html">Guides & Forms</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@ubianworld.edu.ph</p>
+                    <p>Phone: +63 123 456 7890</p>
+                    <p>Address: University of Batangas, Batangas City, Philippines</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Announcements - UbianWorld</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <script src="script.js" defer></script>
+    </head>
+
+    <body>
+        <header>
+    <div class="brand-container">
+        <img src="logo.jpg" alt="ISSO Logo" class="header-logo">
+        <span class="brand-text">ISSO</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="announcement.html" class="active">Announcement</a></li>
+            <li><a href="guides.html">Guides & Forms</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-button"><a href="login.html">Log In</a></li>
+        </ul>
+    </nav>
+</header>
+        
+         <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>📣 Official Announcements & Events</h1>
+                <p>Your centralized platform for support, information, and community at the University of Batangas.</p>
+            </div>
+        </section>
+
+        <main>
+    <section id="announcement-list" class="container">
+    <h2>📣 Official Announcements & Events</h2>
+    
+    <div class="announcements-grid">
+        <article class="update-card event">
+            <h4>Mandatory Orientation for New Exchange Students</h4>
+            <button class="edit-btn" onclick="toggleEdit(this)">✎</button>
+            <p class="date">December 5, 2025</p>
+            <p>All incoming exchange students for the Spring semester must attend this mandatory virtual orientation session. Check your university email for the link and full schedule.</p>
+             <div class="link-edit-wrapper">
+                            <a href="#" class="read-more-link">View Details & Agenda</a>
+                            <input type="text" class="link-input" placeholder="Paste new link here..." style="display: none;">
+                        </div>
+        </article>
+
+        <article class="update-card event">
+            <h4>Final Deadline for Visa Extension Submissions</h4>
+            <button class="edit-btn" onclick="toggleEdit(this)">✎</button>
+            <p class="date">November 30, 2025</p>
+            <p>A final reminder that the deadline for submitting all necessary documents for visa extensions is approaching. Please consult the Guides section for the step-by-step process.</p>
+            <div class="link-edit-wrapper">
+                            <a href="guides.html" class="read-more-link">Go to Visa Guide</a>
+                            <input type="text" class="link-input" placeholder="Paste new link here..." style="display: none;">
+                        </div>
+        </article>
+
+        <article class="update-card event">
+            <h4>Culture Day Celebration: Booth Registration Open!</h4>
+            <button class="edit-btn" onclick="toggleEdit(this)">✎</button>
+            <p class="date">November 25, 2025</p>
+            <p>Interested in showcasing your country's culture, food, or traditions? Register your booth for the annual International Culture Day event happening next month!</p>
+            <div class="link-edit-wrapper">
+                            <a href="#" class="read-more-link">Register Your Booth</a>
+                            <input type="text" class="link-input" placeholder="Paste new link here..." style="display: none;">
+                        </div>
+        </article>
+
+        <article class="update-card event">
+            <h4>ISSO Office Hours Update for the Holidays</h4>
+            <button class="edit-btn" onclick="toggleEdit(this)">✎</button>
+            <p class="date">November 10, 2025</p>
+            <p>Please be informed of the modified International Student Services Office (ISSO) operating hours for the upcoming Christmas and New Year holidays.</p>
+            <div class="link-edit-wrapper">
+                            <a href="#" class="read-more-link">View New Schedule</a>
+                            <input type="text" class="link-input" placeholder="Paste new link here..." style="display: none;">
+                        </div>
+        </article>
+    </div>
+    
+    <aside class="old-events-sidebar">
+        <h3>Old Announcements</h3>
+
+        <div class="old-link-card">
+            <h4>International Culture Day 2024</h4>
+            <p class="date">Oct 10, 2024</p>
+            <a href="#">View Archive</a>
+        </div>
+
+        <div class="old-link-card">
+            <h4>Visa Processing Updates 2023</h4>
+            <p class="date">Dec 2, 2023</p>
+            <a href="#">View Archive</a>
+        </div>
+
+        <div class="old-link-card">
+            <h4>UB International Week 2022</h4>
+            <p class="date">Nov 14–18, 2022</p>
+            <a href="#">View Archive</a>
+        </div>
+    </aside>
+    
+</section>
+</main>
+        
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h3>About UbianWorld</h3>
+                    <p>Your go-to platform for university </p><p>support, announcements, and resources</p><p>at the University of Batangas.</p><p> Empowering students and staff </p><p>with easy access to information.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="announcement.html">Announcements</a></li>
+                        <li><a href="guides.html">Guides & Forms</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@ubianworld.edu.ph</p>
+                    <p>Phone: +63 123 456 7890</p>
+                    <p>Address: University of Batangas, Batangas City, Philippines</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

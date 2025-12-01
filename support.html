@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Support Hub - UbianWorld</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <script src="script.js" defer></script> 
+    </head>
+
+    <body>
+        <header>
+    <div class="brand-container">
+        <img src="logo.jpg" alt="ISSO Logo" class="header-logo">
+        <span class="brand-text">ISSO</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="announcement.html">Announcement</a></li>
+            <li><a href="guides.html">Guides & Forms</a></li>
+            <li><a href="support.html" class="active">Support</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="login-button"><a href="login.html" id="auth-link">Log In</a></li>
+        </ul>
+    </nav>
+</header>
+
+        <main>
+            <section id="support-hero" class="hero-section small-hero">
+                <div class="hero-content">
+                    <h1>Need Help? We've Got You.</h1>
+                    <p>Find quick answers in our FAQ or submit a ticket to the ISSO team.</p>
+                </div>
+            </section>
+
+            <section id="faq" class="container">
+                <h2>❓ Frequently Asked Questions</h2>
+                <p class="section-description">Below are the most common questions from international students. Click a question to see the answer.</p>
+
+                <div class="faq-accordion-container">
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">Is a dual citizen considered an international student?</button>
+                        <div class="faq-answer">
+                            <p>No, dual citizens are considered Filipinos at University of Batangas.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">Is the tuition fee different for international and Filipino students?</button>
+                        <div class="faq-answer">
+                            <p>No, it is the same. However, for international students, 50% of the total fees shall be paid outrightly upon enrollment.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">Is there a Foreign Student Fee to be charged?</button>
+                        <div class="faq-answer">
+                            <p>Yes, new international students and returnees (those who skipped one or more semesters) are required to pay the Foreign Student Fee during regular semesters, except summer.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">Which office at UB handles international students’ concerns?</button>
+                        <div class="faq-answer">
+                            <p>The International Student Services Office (ISSO) handles the non-academic concerns of international students like orientation programs, visa services, information and advising, and the like. ISSO is located on the third floor of UB Corporate Center.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">How do I make an appointment if I need to consult with an ISSO?</button>
+                        <div class="faq-answer">
+                            <p>The ISSO service hours are from 8:00am to 12:00nn and 1:00pm to 4:00pm, from Monday to Friday. It is also possible to make an appointment online by sending an email to isso@ub.edu.ph. Specify your preferred day and time of visit and the name of the ISSO staff you want to make an appointment with. The student may also reach the office through the virtual office by entering the Zoom meeting. Please refer to this link: https://zoom.us/j/96780464569?pwd=VUhJR1ZhMHZRQ0ZaeDVBSCt5R2hvUT09 Meeting ID: 967 8046 4569 Passcode: ubatangas</p>
+                        </div>
+                    </div>
+
+                
+
+                <h2>VISA RELATED CONCERNS</h2>
+
+                <div class="faq-item">
+                        <button class="faq-question">What visas are accepted for study at UB?</button>
+                        <div class="faq-answer">
+                            <p>International students may be allowed to enroll if they have the following types of visa:</p>
+                            <ol>
+                                <li> 9 (f) – Student visa</li>
+                                <li> 9 (e), 9 (e-1) or 9 (e-2) – Foreign government official or dependent</li>
+                                <li> 47 (a) (2) – Exchange fellow or scholar sponsored by an international organization</li>
+                                <li> 9 (g) – Pre-arranged employment (Working visa/Missionary)</li>
+                                <li> PD 218 – Foreign investor</li>
+                                <li> 9 (d) – Treaty trader</li>
+                                <li> 13, 13 (a) to 13 (g) – Permanent resident</li>
+                                <li> SRRV – Special Resident Retiree Visa</li>
+                                <li> SIRV – Special Investor Resident Visa</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question">How long is the validity of the Student Visa?</button>
+                        <div class="faq-answer">
+                            <p>The issue of Student Visa is valid for one year and succeeding extensions cover the academic year. However, students are given an extension period that is shorter than 6 months when nearing the completion of its program.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </section>
+            
+            <section id="inquiry-cta" class="container inquiry-section">
+                <h2>Can't Find Your Answer?</h2>
+                
+                <div id="inquiry-submission-wrapper">
+                    <div class="inquiry-card">
+                        <h3>Submit a New Inquiry Ticket</h3>
+                        
+                        <form id="inquiry-form">
+                            <div class="form-group">
+                                <label for="student-id">University ID / Student ID</label>
+                                <input type="text" id="student-id" name="student_id" placeholder="e.g., UBA-12345" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject of Inquiry</label>
+                                <input type="text" id="subject" name="subject" placeholder="e.g., Visa extension or Document status" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">Detailed Description of Issue/Request</label>
+                                <textarea id="description" name="description" rows="6" placeholder="Please describe your issue clearly and include relevant dates or document names." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="cta-button">Submit Inquiry</button>
+                            
+                            <div id="form-message" style="margin-top: 15px; text-align: center;"></div>
+                        </form>
+                        
+                        <a href="contact.html" class="cta-button secondary-cta" style="margin-top: 20px;">View ISSO Contact Details</a>
+                    </div>
+                </div>
+             </section>
+
+        </main>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h3>About UbianWorld</h3>
+                    <p>Your go-to platform for university </p><p>support, announcements, and resources</p><p>at the University of Batangas.</p><p> Empowering students and staff </p><p>with easy access to information.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="announcement.html">Announcements</a></li>
+                        <li><a href="guides.html">Guides & Forms</a></li>
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@ubianworld.edu.ph</p>
+                    <p>Phone: +63 123 456 7890</p>
+                    <p>Address: University of Batangas, Batangas City, Philippines</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
